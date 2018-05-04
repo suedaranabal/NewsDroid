@@ -1,5 +1,6 @@
 package com.example.NewsDroid;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.jsoup.Jsoup;
@@ -9,46 +10,85 @@ import org.jsoup.select.Elements;
 
 import com.vaadin.server.ExternalResource;
 
-import com.vaadin.ui.Layout;
-
 public class JsoupConnect {
 
 	private Elements p;
 	private String img;
 	private Elements h1;
 	private Elements h2;
+	private String dosyaAdi;
 
 	private Elements elementClass;
+	@SuppressWarnings("unused")
 	private ExternalResource imageEx;
 	String target;
 	String address;
 	private String src;
 	Document doc;
 	int count = 1;
-	public JsoupConnect(String connect, String htmlClass, String address) throws IOException {
+
+	public JsoupConnect(String connect, String htmlClass) throws IOException {
 
 		doc = Jsoup.connect(connect).get();
-		this.address = address;
+
 		elementClass = doc.select(htmlClass);
 
 	}
 
-	public void imageAdd(String tag, String attr) throws IOException {
-
+	public void parseOperations(String dosyaAdi, String address, String attr) throws IOException {
+		this.dosyaAdi = dosyaAdi;
 		for (Element image : elementClass) {
 
-			src = image.getElementsByTag("img").attr("src");
+			src = image.getElementsByTag("img").attr(attr);
 			target = image.getElementsByTag("a").attr("href");
-
-			//System.out.println("deneme" + target);
 			imageEx = new ExternalResource(src);
-			content(target);
+			content(address + target);
 			count++;
-			//layout.addComponent(new MyPanel(target, imageEx));
 
 		}
 
 	}
+
+	public void gallery(String dosyaAdi) throws IOException {
+		for (Element image : elementClass) {
+
+			src = image.getElementsByTag("img").attr("src"); 
+			h2 = image.getElementsByTag("H2"); 
+			
+		
+			
+			
+			for (int i = 0; i < 1; i++) {
+				File path = new File("News/" + dosyaAdi + count + ".txt");
+				if(!path.exists()) {
+					FileOperations fileOperations = new FileOperations("News/" + dosyaAdi + count + ".txt");
+
+					fileOperations.fileWrite(src);
+					fileOperations.fileWrite(h2.text());
+					
+				
+
+					fileOperations.yaz.close();
+					System.out.println(src);
+					System.out.println(h2.text());
+				}else {
+					path.delete();
+					
+					FileOperations fileOperations = new FileOperations("News/" + dosyaAdi + count + ".txt");
+
+					fileOperations.fileWrite(src);
+					
+					fileOperations.fileWrite(h2.text());
+					
+
+					fileOperations.yaz.close();
+					System.out.println(src);
+					System.out.println(h2.text());
+				}
+
+				count++;
+			}}}
+	
 
 	private void content(String connectHref) throws IOException {
 		doc = Jsoup.connect(connectHref).get();
@@ -57,21 +97,36 @@ public class JsoupConnect {
 		h2 = doc.select("H2");
 		img = doc.select("img").attr("src");
 
-		
-		for (int i=0 ; i<1 ; i++) {
+		for (int i = 0; i < 1; i++) {
+			File path = new File("News/" + dosyaAdi + count + ".txt");
+			if (!path.exists()) {
+				FileOperations fileOperations = new FileOperations("News/" + dosyaAdi + count + ".txt");
 
-			FileOperations fileOperations = new FileOperations("../haber" + count + ".txt");
+				fileOperations.fileWrite(connectHref);
+				fileOperations.fileWrite(h1.text());
+				fileOperations.fileWrite(h2.text());
+				fileOperations.fileWrite(src);
+				fileOperations.fileWrite(p.text());
 
-			fileOperations.fileWrite(connectHref);
-			fileOperations.fileWrite(h1.text());
-		fileOperations.fileWrite(h2.text());
-			fileOperations.fileWrite(src);
-			fileOperations.fileWrite(p.text());
+				fileOperations.yaz.close();
+				System.out.println(connectHref);
+				System.out.println(h1.text());
+			} else {
+				path.delete();
 
-			fileOperations.yaz.close();
-			System.out.println(connectHref);
-			System.out.println(h1.text());
-			
+				FileOperations fileOperations = new FileOperations("News/" + dosyaAdi + count + ".txt");
+
+				fileOperations.fileWrite(connectHref);
+				fileOperations.fileWrite(h1.text());
+				fileOperations.fileWrite(h2.text());
+				fileOperations.fileWrite(src);
+				fileOperations.fileWrite(p.text());
+
+				fileOperations.yaz.close();
+				System.out.println(connectHref);
+				System.out.println(h1.text());
+			}
+
 			// System.out.println(p.text());
 		}
 	}

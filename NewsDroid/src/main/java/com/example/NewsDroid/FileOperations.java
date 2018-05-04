@@ -9,13 +9,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class FileOperations {
-	String dosyayolu;
-	File dosya;
+public class FileOperations {  
+	String dosyayolu;  
+	public File dosya;
 	BufferedWriter yaz;
 	FileWriter yazici;
 
-	ArrayList<String> newsDetail = new ArrayList<>();
+	public ArrayList<String> newsDetail = new ArrayList<>();
 
 	public FileOperations(String dosyayolu) {
 		dosya = new File(dosyayolu);
@@ -23,20 +23,19 @@ public class FileOperations {
 		this.dosyayolu = dosyayolu;
 	}
 
-	public void fileWrite(String metin) throws IOException {
+	public void fileWrite(String metin) throws IOException {	
 
-		yazici = new FileWriter(dosya, true);
+		yazici = new FileWriter(dosya, true);  	
 		yaz = new BufferedWriter(yazici);
-		yaz.write(metin);
+		yaz.write(metin);   	
 		yaz.newLine();
 		yaz.close();
-		System.out.println("Ekleme İşlemi Başarılı");
 
 	}
 
 	public void FileRead(File path) throws IOException {
 
-		FileReader fileReader = new FileReader(path);
+		FileReader fileReader = new FileReader("C:/Users/ASUS/git/NewsDroid/NewsDroid/" + path);
 		String line;
 
 		BufferedReader br = new BufferedReader(fileReader);
@@ -44,7 +43,6 @@ public class FileOperations {
 		try {
 			while ((line = br.readLine()) != null) {
 
-				//System.out.println(line);
 				newsDetail.add(line);
 
 			}
@@ -56,5 +54,8 @@ public class FileOperations {
 		}
 
 	}
+//	public void FileControl(File path) {
+//		
+//	}
 
 }

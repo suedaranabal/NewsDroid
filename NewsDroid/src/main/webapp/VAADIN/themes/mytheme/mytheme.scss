@@ -34,5 +34,54 @@
 @mixin mytheme {
   @include valo;
 
+
+.v-ui {
+    background: #E8E8E8;
+    
+  }
+
+ 
+  
+  .v-panel-content {
+   .v-verticallayout{
+ 
+ 	background:#F0F8FF;
+ }
+  	background:#E8E8E8;
+  }
+  
+  .v-captiontext{
+  	font-family: 'Open Sans', sans-serif;
+	font-family: 'Roboto', sans-serif;
+	font-weight:Bold;
+  }
+  
+	.v-menubar {
+	background: blue;
+	color:red;
+
+	font-size:16px;
+	color:black;
+	font-weight:normal;
+	border:activeborder;
+	background-color: #F0F8FF;
+}
+
+.v-dovizpanel {
+	background: red;
+	color:red;
+
+	font-size:16px;
+	color:black;
+	font-weight:normal;
+	border:activeborder;
+	background-color: #F0F8FF;
+}
+
+
+	//1d9dff
+
   // Insert your own theme rules here
 }
+
+

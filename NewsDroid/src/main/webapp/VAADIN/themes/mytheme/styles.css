@@ -15052,3 +15052,41 @@ div.v-layout.v-horizontal.v-widget {
 	width: 19px;
 	overflow: hidden;
 }
+
+.mytheme .v-ui {
+	background: #E8E8E8;
+}
+
+.mytheme .v-panel-content {
+	background: #E8E8E8;
+}
+
+.mytheme .v-panel-content .v-verticallayout {
+	background: #F0F8FF;
+}
+
+.mytheme .v-captiontext {
+	font-family: "Open Sans", sans-serif;
+	font-family: "Roboto", sans-serif;
+	font-weight: Bold;
+}
+
+.mytheme .v-menubar {
+	background: blue;
+	color: red;
+	font-size: 16px;
+	color: black;
+	font-weight: normal;
+	border: activeborder;
+	background-color: #F0F8FF;
+}
+
+.mytheme .v-dovizpanel {
+	background: red;
+	color: red;
+	font-size: 16px;
+	color: black;
+	font-weight: normal;
+	border: activeborder;
+	background-color: #F0F8FF;
+}
