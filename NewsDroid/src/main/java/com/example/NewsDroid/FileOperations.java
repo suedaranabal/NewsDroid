@@ -16,6 +16,7 @@ public class FileOperations {
 	FileWriter yazici;
 
 	public ArrayList<String> newsDetail = new ArrayList<>();
+	
 
 	public FileOperations(String dosyayolu) {
 		dosya = new File(dosyayolu);
@@ -43,6 +44,10 @@ public class FileOperations {
 		try {
 			while ((line = br.readLine()) != null) {
 
+				
+				
+				
+				
 				newsDetail.add(line);
 
 			}
@@ -54,8 +59,5 @@ public class FileOperations {
 		}
 
 	}
-//	public void FileControl(File path) {
-//		
-//	}
 
 }

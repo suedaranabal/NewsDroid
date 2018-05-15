@@ -22,14 +22,14 @@ public class AgendaPage extends GridLayout {
 		gridLayout.setRows(4);
 		gridLayout.setColumns(4);
 		gridLayout.setSpacing(true);
-		imageAdd();
+		agendaParse();
 		SliderShow sliderShow = new SliderShow(slider.get(0),slider.get(2), slider.get(4), slider.get(1), slider.get(3), slider.get(5));
 		addComponent(sliderShow);
 		addComponent(gridLayout);
 
 	}
 
-	public void imageAdd() throws IOException {
+	public void agendaParse() throws IOException {
 
 
 		for (int i = 0; i < 24; i++) {

@@ -22,7 +22,6 @@ public class MenuBar extends VerticalLayout {
 	public MenuItem gallery;
 	public MenuItem cinema;
 	public MenuItem weather;
-	public MenuItem traffic;
 	public MenuItem worship;
 
 	@SuppressWarnings("deprecation")
@@ -42,14 +41,12 @@ public class MenuBar extends VerticalLayout {
 		science.setIcon(FontAwesome.FLASK);
 		columnists = menubar.addItem("Köşe Yazarları", null);
 		columnists.setIcon(FontAwesome.EDIT);
-		gallery = menubar.addItem("Galeri", null);
-		gallery.setIcon(FontAwesome.IMAGE);
-		cinema = menubar.addItem("BeyazPerde", null);
-		cinema.setIcon(FontAwesome.FILE_MOVIE_O);
+		
 		// ikinci Menu bar başlangıcı
-
-		traffic = menubar2.addItem("Trafik Durumu", null);
-		traffic.setIcon(FontAwesome.CAR);
+		gallery = menubar2.addItem("Galeri", null);
+		gallery.setIcon(FontAwesome.IMAGE);
+		cinema = menubar2.addItem("BeyazPerde", null);
+		cinema.setIcon(FontAwesome.FILE_MOVIE_O);
 		worship = menubar2.addItem("Ezan Vakitleri", null);
 		worship.setIcon(FontAwesome.CLOCK_O);
 		addComponent(menubar);

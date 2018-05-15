@@ -127,7 +127,7 @@ public class JsoupConnect {
 				System.out.println(h1.text());
 			}
 
-			// System.out.println(p.text());
+		
 		}
 	}
 

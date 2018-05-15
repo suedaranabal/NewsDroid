@@ -1,19 +1,19 @@
 package Pages;
 
-import java.io.EOFException;
+
 import java.io.IOException;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
+
 import org.jsoup.select.Elements;
 
 import com.vaadin.server.ExternalResource;
-import com.vaadin.shared.ui.ContentMode;
+
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
-import com.vaadin.ui.JavaScript;
+
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
@@ -38,7 +38,7 @@ public class ForeignCurrencyPage extends VerticalLayout {
 		dovizParse();
 
 		Image dolarImage = new Image("",
-				new ExternalResource("https://freeiconshop.com/wp-content/uploads/edd/dollar-solid.png"));
+				new ExternalResource("https://image.freepik.com/iconen-gratis/dollar-symbool_318-27603.jpg"));
 		dolarImage.setWidth(20, Unit.PIXELS);
 
 		Image euroImage = new Image("",
@@ -59,7 +59,7 @@ public class ForeignCurrencyPage extends VerticalLayout {
 		layout.addComponent(horizontalEuro);
 		layout.setComponentAlignment(horizontalEuro, Alignment.BOTTOM_CENTER);
 
-		panel.setWidth(300 ,Unit.PIXELS);
+		panel.setWidth(300, Unit.PIXELS);
 		panel.setCaption("Döviz Kuru");
 		panel.setContent(layout);
 		addComponent(panel);

@@ -25,13 +25,14 @@ import com.vaadin.ui.VerticalLayout;
 import Pages.AgendaPage;
 import Pages.CinemaPage;
 import Pages.ColumnistsPage;
+import Pages.FlashPage;
 import Pages.GalleryPages;
 import Pages.HomePage;
 import Pages.SciencePage;
 import Pages.SportPage;
-import Pages.TrafficPage;
 
 import Pages.WorldPage;
+import Pages.WorshipPage;
 import elemental.json.JsonArray;
 
 /**
@@ -47,40 +48,43 @@ import elemental.json.JsonArray;
 @Theme("mytheme")
 
 public class MyUI extends UI {
-	WorldPage world = null;
+	HomePage homePage = null;
+	FlashPage flash = null;
 	AgendaPage agenda = null;
-	NewsDetail detail = null;
+	WorldPage world = null;
 	SportPage sport = null;
 	SciencePage science = null;
 	ColumnistsPage columnists = null;
-	HomePage homePage = null;
 	GalleryPages gallery = null;
 	CinemaPage cinema = null;
-	TrafficPage traffic = null;
-
+	WorshipPage worship = null;
+	NewsDetail detail = null;
 
 	final VerticalLayout layout = new VerticalLayout();
 
-	
-	
 	@Override
 	protected void init(VaadinRequest vaadinRequest) {
 
-		
-		
-		
-		
 		MenuBar menubar = new MenuBar();
-		menubar.world.setCommand(new Command() {
+
+		menubar.home.setCommand(new Command() {
 
 			@Override
 			public void menuSelected(MenuItem selectedItem) {
-				selectWorld();
+				selectHomePage();
+
+			}
+		});
+
+		menubar.flash.setCommand(new Command() {
+
+			@Override
+			public void menuSelected(MenuItem selectedItem) {
+				selectFlash();
 
 			}
 
 		});
-
 		menubar.agenda.setCommand(new Command() {
 
 			@Override
@@ -91,6 +95,15 @@ public class MyUI extends UI {
 
 		});
 
+		menubar.world.setCommand(new Command() {
+
+			@Override
+			public void menuSelected(MenuItem selectedItem) {
+				selectWorld();
+
+			}
+
+		});
 		menubar.sport.setCommand(new Command() {
 
 			@Override
@@ -118,14 +131,7 @@ public class MyUI extends UI {
 
 			}
 		});
-		menubar.home.setCommand(new Command() {
 
-			@Override
-			public void menuSelected(MenuItem selectedItem) {
-				selectHomePage();
-
-			}
-		});
 		menubar.gallery.setCommand(new Command() {
 
 			@Override
@@ -143,19 +149,18 @@ public class MyUI extends UI {
 			}
 		});
 
-		menubar.traffic.setCommand(new Command() {
+		menubar.worship.setCommand(new Command() {
 
 			@Override
 			public void menuSelected(MenuItem selectedItem) {
-				selectTrafficPage();
+				selectWorshipPage();
 			}
 		});
-
-		
 
 		try {
 
 			homePage = new HomePage();
+			flash = new FlashPage();
 			agenda = new AgendaPage();
 			world = new WorldPage();
 			sport = new SportPage();
@@ -163,8 +168,8 @@ public class MyUI extends UI {
 			columnists = new ColumnistsPage();
 			gallery = new GalleryPages();
 			cinema = new CinemaPage();
-			traffic = new TrafficPage();
-			
+			worship = new WorshipPage();
+
 			detail = new NewsDetail("News/World/World1.txt");
 
 		} catch (IOException e) {
@@ -177,6 +182,7 @@ public class MyUI extends UI {
 
 		layout.addComponent(menubar);
 		layout.addComponent(homePage);
+		layout.addComponent(flash);
 		layout.addComponent(world);
 		layout.addComponent(agenda);
 		layout.addComponent(sport);
@@ -184,12 +190,13 @@ public class MyUI extends UI {
 		layout.addComponent(columnists);
 		layout.addComponent(gallery);
 		layout.addComponent(cinema);
-		layout.addComponent(traffic);
-		
+		layout.addComponent(worship);
+
 		setContent(layout);
 		layout.setComponentAlignment(menubar, Alignment.MIDDLE_CENTER);
 
 		layout.setComponentAlignment(homePage, Alignment.MIDDLE_CENTER);
+		layout.setComponentAlignment(flash, Alignment.MIDDLE_CENTER);
 		layout.setComponentAlignment(world, Alignment.MIDDLE_CENTER);
 		layout.setComponentAlignment(agenda, Alignment.MIDDLE_CENTER);
 		layout.setComponentAlignment(sport, Alignment.MIDDLE_CENTER);
@@ -197,67 +204,100 @@ public class MyUI extends UI {
 		layout.setComponentAlignment(columnists, Alignment.MIDDLE_CENTER);
 		layout.setComponentAlignment(gallery, Alignment.MIDDLE_CENTER);
 		layout.setComponentAlignment(cinema, Alignment.MIDDLE_CENTER);
-		layout.setComponentAlignment(traffic, Alignment.MIDDLE_CENTER);
-	
+		layout.setComponentAlignment(worship, Alignment.MIDDLE_CENTER);
 
 		layout.setSpacing(false);
 
 	}
 
-	public void selectWorld() {
-		world.setVisible(true);
-		homePage.setVisible(false);
+	public void selectHomePage() {
+
+		homePage.setVisible(true);
+		flash.setVisible(false);
+		columnists.setVisible(false);
+		world.setVisible(false);
 		agenda.setVisible(false);
+		sport.setVisible(false);
+		science.setVisible(false);
+		gallery.setVisible(false);
+		cinema.setVisible(false);
+		worship.setVisible(false);
+
+		detail.setVisible(false);
+	}
+
+	public void selectFlash() {
+		flash.setVisible(true);
+		agenda.setVisible(false);
+		homePage.setVisible(false);
+		world.setVisible(false);
 		sport.setVisible(false);
 		science.setVisible(false);
 		columnists.setVisible(false);
 		gallery.setVisible(false);
 		cinema.setVisible(false);
-		traffic.setVisible(false);
-		detail.setVisible(false);
-		
+		worship.setVisible(false);
 
+		detail.setVisible(false);
 	}
 
 	public void selectAgenda() {
 		agenda.setVisible(true);
 		homePage.setVisible(false);
+		flash.setVisible(false);
 		world.setVisible(false);
 		sport.setVisible(false);
 		science.setVisible(false);
 		columnists.setVisible(false);
 		gallery.setVisible(false);
 		cinema.setVisible(false);
-		traffic.setVisible(false);
-		
+		worship.setVisible(false);
+
 		detail.setVisible(false);
+	}
+
+	public void selectWorld() {
+		world.setVisible(true);
+		homePage.setVisible(false);
+		flash.setVisible(false);
+		agenda.setVisible(false);
+		sport.setVisible(false);
+		science.setVisible(false);
+		columnists.setVisible(false);
+		gallery.setVisible(false);
+		cinema.setVisible(false);
+		worship.setVisible(false);
+		detail.setVisible(false);
+
 	}
 
 	public void selectSport() {
 		sport.setVisible(true);
 		homePage.setVisible(false);
+		flash.setVisible(false);
 		agenda.setVisible(false);
 		world.setVisible(false);
 		science.setVisible(false);
 		columnists.setVisible(false);
 		gallery.setVisible(false);
 		cinema.setVisible(false);
-		traffic.setVisible(false);
-		
+		worship.setVisible(false);
+
 		detail.setVisible(false);
 	}
 
 	public void selectScience() {
 		science.setVisible(true);
 		homePage.setVisible(false);
+		flash.setVisible(false);
 		sport.setVisible(false);
 		agenda.setVisible(false);
 		world.setVisible(false);
 		columnists.setVisible(false);
 		gallery.setVisible(false);
 		cinema.setVisible(false);
-		traffic.setVisible(false);
-		
+		worship.setVisible(false);
+
 		detail.setVisible(false);
 	}
 
@@ -265,29 +305,15 @@ public class MyUI extends UI {
 
 		columnists.setVisible(true);
 		homePage.setVisible(false);
+		flash.setVisible(false);
 		world.setVisible(false);
 		agenda.setVisible(false);
 		sport.setVisible(false);
 		science.setVisible(false);
 		gallery.setVisible(false);
 		cinema.setVisible(false);
-		traffic.setVisible(false);
-		
-		detail.setVisible(false);
-	}
+		worship.setVisible(false);
 
-	public void selectHomePage() {
-
-		homePage.setVisible(true);
-		columnists.setVisible(false);
-		world.setVisible(false);
-		agenda.setVisible(false);
-		sport.setVisible(false);
-		science.setVisible(false);
-		gallery.setVisible(false);
-		cinema.setVisible(false);
-		traffic.setVisible(false);
-		
 		detail.setVisible(false);
 	}
 
@@ -295,35 +321,38 @@ public class MyUI extends UI {
 
 		gallery.setVisible(true);
 		homePage.setVisible(false);
+		flash.setVisible(false);
 		columnists.setVisible(false);
 		world.setVisible(false);
 		agenda.setVisible(false);
 		sport.setVisible(false);
 		science.setVisible(false);
 		cinema.setVisible(false);
-		traffic.setVisible(false);
+		worship.setVisible(false);
 		detail.setVisible(false);
 	}
 
 	public void selectCinemaPage() {
 		cinema.setVisible(true);
-		world.setVisible(false);
 		homePage.setVisible(false);
+		flash.setVisible(false);
 		agenda.setVisible(false);
+		world.setVisible(false);
 		sport.setVisible(false);
 		science.setVisible(false);
 		columnists.setVisible(false);
 		gallery.setVisible(false);
-		traffic.setVisible(false);
+		worship.setVisible(false);
 		detail.setVisible(false);
 
 	}
 
-	public void selectTrafficPage() {
-		traffic.setVisible(true);
-		world.setVisible(false);
+	public void selectWorshipPage() {
+		worship.setVisible(true);
 		homePage.setVisible(false);
+		flash.setVisible(false);
 		agenda.setVisible(false);
+		world.setVisible(false);
 		sport.setVisible(false);
 		science.setVisible(false);
 		columnists.setVisible(false);
@@ -332,14 +361,13 @@ public class MyUI extends UI {
 		detail.setVisible(false);
 
 	}
-
-	
 
 	public void selectDetail(String url) throws IOException {
 		detail = new NewsDetail(url);
 
 		detail.setVisible(true);
 		homePage.setVisible(false);
+		flash.setVisible(false);
 		science.setVisible(false);
 		sport.setVisible(false);
 		agenda.setVisible(false);
@@ -347,7 +375,7 @@ public class MyUI extends UI {
 		gallery.setVisible(false);
 		world.setVisible(false);
 		cinema.setVisible(false);
-		traffic.setVisible(false);
+		worship.setVisible(false);
 
 		layout.addComponent(detail);
 		layout.setComponentAlignment(detail, Alignment.MIDDLE_CENTER);

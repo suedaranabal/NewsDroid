@@ -1,10 +1,14 @@
 package com.example.NewsDroid;
 
+import javax.swing.Icon;
+
 import com.vaadin.event.MouseEvents.ClickEvent;
 import com.vaadin.event.MouseEvents.ClickListener;
+import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.shared.ui.ContentMode;
 import com.vaadin.ui.Alignment;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
@@ -19,12 +23,15 @@ public class SliderShow extends VerticalLayout {
 
 	Slider slider = new Slider();
 	Panel panel = new Panel();
+	// Button rightButton = new Button("" , VaadinIcons.ARROW_RIGHT);
+	// Button leftButton = new Button("" , VaadinIcons.ARROW_LEFT);
 	String img1;
 	String img2;
 	String img3;
 	String h11;
 	String h12;
 	String h13;
+
 	VerticalLayout layout = new VerticalLayout();
 	HorizontalLayout horizontalLayout = new HorizontalLayout();
 	VerticalLayout layout2 = new VerticalLayout();
@@ -58,6 +65,7 @@ public class SliderShow extends VerticalLayout {
 		});
 
 		panel.setCaption(h11);
+
 		image.setWidth(630, Unit.PIXELS);
 		panel.setContent(image);
 
@@ -69,22 +77,22 @@ public class SliderShow extends VerticalLayout {
 
 		slider.addValueChangeListener(event -> sliderValue());
 		layout.addComponent(panel);
-		
+
 		horizontalLayout.addComponent(layout);
-		
 
 		layout2.addComponent(weatherPage);
 		layout2.setComponentAlignment(weatherPage, Alignment.TOP_CENTER);
 		layout2.addComponent(currencyPage);
 		layout2.setComponentAlignment(currencyPage, Alignment.TOP_CENTER);
 		layout2.setSpacing(false);
-		layout2.setHeight(500,Unit.PIXELS);
-		
+		layout2.setHeight(500, Unit.PIXELS);
+
 		horizontalLayout.addComponent(layout2);
-		
+
 		horizontalLayout.setSpacing(false);
 		addComponent(horizontalLayout);
 		horizontalLayout.setComponentAlignment(layout2, Alignment.TOP_LEFT);
+
 	}
 
 	public void sliderValue() {
