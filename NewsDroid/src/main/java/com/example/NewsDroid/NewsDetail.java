@@ -49,7 +49,7 @@ public class NewsDetail extends Panel {
 
 		Label paragraf = new Label(fileOperations.newsDetail.get(4));
 		paragraf.addStyleName("bold");		
-		paragraf.setWidth(900, Unit.PIXELS);
+		paragraf.setWidth(800, Unit.PIXELS);
 		paragraf.setSizeFull();
 
 		layout.addComponents(h1, image, spacing, paragraf);

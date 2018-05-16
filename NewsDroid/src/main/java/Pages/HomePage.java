@@ -35,7 +35,7 @@ public class HomePage extends GridLayout {
 
 		specialDay();
 		feastDay();
-		//weather();
+		// weather();
 
 		newsParse("Agenda/Agenda");
 		newsParse("World/World");
@@ -51,8 +51,6 @@ public class HomePage extends GridLayout {
 
 		SimpleDateFormat bicim3 = new SimpleDateFormat("dd-MM");
 		GregorianCalendar tarihnow = new GregorianCalendar();
-
-		
 
 		if (tarihnow.get(Calendar.MONTH) == 3 && tarihnow.get(Calendar.DAY_OF_MONTH) == 23) {
 			String url = "News/Feast/23April" + ".txt";
@@ -103,7 +101,7 @@ public class HomePage extends GridLayout {
 			MyPanel myPanel = new MyPanel(h1, externalResource, url);
 			gridLayout.addComponent(myPanel);
 		}
-		
+
 		else if (tarihnow.get(Calendar.MONTH) == 4 && tarihnow.get(Calendar.DAY_OF_MONTH) == 1) {
 			String url = "News/Feast/1May" + ".txt";
 
@@ -123,8 +121,6 @@ public class HomePage extends GridLayout {
 		SimpleDateFormat bicim3 = new SimpleDateFormat("dd-MM");
 		GregorianCalendar tarihnow = new GregorianCalendar();
 
-		
-
 		if (tarihnow.get(Calendar.DAY_OF_MONTH) == 15) {
 			String url = "News/Special/BedelliAskerlik" + ".txt";
 
@@ -136,8 +132,9 @@ public class HomePage extends GridLayout {
 
 			MyPanel myPanel = new MyPanel(h1, externalResource, url);
 			gridLayout.addComponent(myPanel);
-		} 
-		else if(tarihnow.get(Calendar.MONTH) == 5 | tarihnow.get(Calendar.MONTH) == 6 && tarihnow.get(Calendar.DAY_OF_MONTH) == 1 | tarihnow.get(Calendar.DAY_OF_MONTH) == 14 | tarihnow.get(Calendar.DAY_OF_MONTH) == 25) {
+		} else if (tarihnow.get(Calendar.MONTH) == 5 | tarihnow.get(Calendar.MONTH) == 6
+				&& tarihnow.get(Calendar.DAY_OF_MONTH) == 1 | tarihnow.get(Calendar.DAY_OF_MONTH) == 14
+						| tarihnow.get(Calendar.DAY_OF_MONTH) == 25) {
 			String url = "News/Special/SıcakHava" + ".txt";
 
 			fileOperations = new FileOperations(url);
@@ -149,9 +146,11 @@ public class HomePage extends GridLayout {
 			MyPanel myPanel = new MyPanel(h1, externalResource, url);
 			gridLayout.addComponent(myPanel);
 		}
-		
-		
-		else if(tarihnow.get(Calendar.MONTH) == 4 | tarihnow.get(Calendar.MONTH) == 12 | tarihnow.get(Calendar.MONTH) == 0 && tarihnow.get(Calendar.DAY_OF_MONTH) == 1 | tarihnow.get(Calendar.DAY_OF_MONTH) == 14 | tarihnow.get(Calendar.DAY_OF_MONTH) == 25) {
+
+		else if (tarihnow.get(Calendar.MONTH) == 4 | tarihnow.get(Calendar.MONTH) == 12
+				| tarihnow.get(Calendar.MONTH) == 0
+				&& tarihnow.get(Calendar.DAY_OF_MONTH) == 1 | tarihnow.get(Calendar.DAY_OF_MONTH) == 14
+						| tarihnow.get(Calendar.DAY_OF_MONTH) == 25) {
 			String url = "News/Special/SoğukHava" + ".txt";
 
 			fileOperations = new FileOperations(url);
@@ -163,24 +162,8 @@ public class HomePage extends GridLayout {
 			MyPanel myPanel = new MyPanel(h1, externalResource, url);
 			gridLayout.addComponent(myPanel);
 		}
-		
-	}
 
-//	public void weather() {
-//		try {
-//			
-//			doc = Jsoup.connect("http://tr.freemeteo.com/havadurumu/istanbul/7-days/list/?gid=745044&language=turkish&country=turkey").get();
-//			element = doc.select("div[class=\"temps\"]>b");
-//			weather.setValue(element.text());
-//			System.out.println(weather.getValue());
-//			
-//			
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//	}
+	}
 
 	public void newsParse(String urlPage) throws IOException {
 

@@ -48,6 +48,8 @@ import elemental.json.JsonArray;
 @Theme("mytheme")
 
 public class MyUI extends UI {
+	
+
 	HomePage homePage = null;
 	FlashPage flash = null;
 	AgendaPage agenda = null;
@@ -158,7 +160,7 @@ public class MyUI extends UI {
 		});
 
 		try {
-
+			
 			homePage = new HomePage();
 			flash = new FlashPage();
 			agenda = new AgendaPage();
@@ -169,6 +171,7 @@ public class MyUI extends UI {
 			gallery = new GalleryPages();
 			cinema = new CinemaPage();
 			worship = new WorshipPage();
+			
 
 			detail = new NewsDetail("News/World/World1.txt");
 
@@ -176,6 +179,9 @@ public class MyUI extends UI {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
